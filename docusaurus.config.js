@@ -94,13 +94,4 @@ const config = {
   }
 };
 
-if (process.env.NODE_ENV === 'production') {
-  config.scripts = [
-    {
-      src: 'https://static.cloudflareinsights.com/beacon.min.js?token=7dcf2960a35544e58500ec94fb39cead',
-      defer: true
-    }
-  ];
-}
-
 module.exports = config;
