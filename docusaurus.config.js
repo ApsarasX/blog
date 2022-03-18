@@ -21,29 +21,32 @@ const config = {
         },
         blog: {
           showReadingTime: false,
-          blogSidebarCount: 0,
-          routeBasePath: '/',
           archiveBasePath: '/archives'
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
-        },
-      }),
-    ],
+        }
+      })
+    ]
   ],
+  themes: ['@docusaurus/theme-live-codeblock'],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        respectPrefersColorScheme: true,
+        disableSwitch: true
+      },
       navbar: {
+        title: 'ApsarasX',
         items: [
-          { to: '/', label: '首页', position: 'left' },
+          { to: '/blog', label: '博客', position: 'left' },
           { to: '/docs', label: '教程', position: 'left' },
-          { to: '/archives', label: '归档', position: 'left' },
-          { to: '/tags', label: '标签', position: 'left' },
           {
             href: 'https://github.com/ApsarasX',
-            label: 'GitHub',
-            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+            position: 'right'
           }
         ]
       },
@@ -55,18 +58,18 @@ const config = {
             items: [
               {
                 label: 'LLVM 入门笔记',
-                to: '/docs/',
-              },
-            ],
+                to: '/docs/'
+              }
+            ]
           },
           {
             title: '社交媒体',
             items: [
               {
                 label: 'Github',
-                href: 'https://github.com/ApsarasX',
+                href: 'https://github.com/ApsarasX'
               }
-            ],
+            ]
           },
           {
             title: '友情链接',
@@ -75,20 +78,29 @@ const config = {
                 label: 'fynch3r',
                 href: 'https://fynch3r.github.io'
               }
-            ],
-          },
+            ]
+          }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} ApsarasX Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ApsarasX Built with Docusaurus.`
       },
       prism: {
         theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-      },
+        darkTheme: darkCodeTheme
+      }
     }),
-    i18n: {
-      defaultLocale: 'zh-CN',
-      locales: ['zh-CN']
-    }
+  i18n: {
+    defaultLocale: 'zh-CN',
+    locales: ['zh-CN']
+  }
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.scripts = [
+    {
+      src: 'https://static.cloudflareinsights.com/beacon.min.js?token=7dcf2960a35544e58500ec94fb39cead',
+      defer: true
+    }
+  ];
+}
 
 module.exports = config;

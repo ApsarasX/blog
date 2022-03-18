@@ -1,9 +1,9 @@
 ---
-title: 在JavaScript/TypeScript上使用LLVM
+title: 在JavaScript和TypeScript中使用LLVM
 tags: [编译器, LLVM, JavaScript, TypeScript]
 ---
 
-## 前言
+## 序言
 
 众所周知，编译原理、操作系统、图形学被称为程序员的三大浪漫，相信每个程序员都有一个开发一款编译器的梦想。
 
@@ -39,7 +39,7 @@ LLVM有没有提供JavaScript的适配器呢?
 
 话不多说，来试试Demo。
 
-### 安装
+## 安装
 
 [llvm-bindings](https://github.com/ApsarasX/llvm-bindings) 毕竟是LLVM的适配器，不是独立的软件，所以用它之前，你得先把LLVM装好😊。
 
@@ -68,7 +68,7 @@ npm install llvm-bindings
 
 安装时你会发现会卡一分钟，这是正常的，因为 `llvm-bindings` 需要一分钟的时间去编译。
 
-### 使用
+## 使用
 
 好了，做完准备工作之后，我们就可以开始写我们的mini mini compiler了，创建一个叫做 `llvm-demo.js` 的文件，接下来所有的代码都在这个文件里面写。
 
@@ -141,22 +141,22 @@ module_.print();
 
 这就是一个简单的add函数的LLVM IR表示，看起来很像汇编对不对，在正常的编译器流程里，LLVM会继续把他转为各种各样的图(DAG之类), 最后进行寄存器分配生成汇编，生成机器码。
 
-### 底层原理
+## 底层原理
 
 没有什么原理，`llvm-bindings` 就是利用Node.js的C++插件技术在JavaScript与C++之间进行中转。
 
-### 总结
+## 总结
 
 其实这是一个广告贴哈哈，宣传一下我做的 [llvm-bindings](https://github.com/ApsarasX/llvm-bindings) 项目，这是我在做TypeScript程序分析项目的时的一个副产物。不过如今，主项目黄了，这个副产物我倒觉得做的很不错，所以发出来给大家分享一下。
 
 LLVM这个项目，说实话真的很大，仅核心部分(不算clang/lld/lldb等其他库)就有163w行代码，所以目前`llvm-bindings` 并不能覆盖100%的API，如果你想用一些还没有的API，尽情发issue吧，我会在收到issue一天内完成添加。
 
-### FAQ
+## FAQ
 
 - Q: llvm-bindings支持哪些版本的LLVM
 - A: 最新版支持LLVM 13, `llvm-bindings` 仓库中[有一个地方写了llvm-bindings与LLVM的版本对应关系](https://github.com/ApsarasX/llvm-bindings#compatibility)，看那个就好。
 
-### 相关链接
+## 相关链接
 
 - LLVM: https://llvm.org
 - llvm-bindings: https://github.com/ApsarasX/llvm-bindings
