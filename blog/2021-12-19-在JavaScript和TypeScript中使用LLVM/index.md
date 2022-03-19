@@ -1,6 +1,7 @@
 ---
 title: 在JavaScript和TypeScript中使用LLVM
-tags: [编译器, LLVM, JavaScript, TypeScript]
+description: 介绍用于在JavaScript和TypeScript中使用LLVM的插件
+tags: [编译器, LLVM, JavaScript, TypeScript, llvm-bindings]
 ---
 
 ## 序言

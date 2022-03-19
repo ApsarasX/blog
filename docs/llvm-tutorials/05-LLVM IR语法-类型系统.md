@@ -1,4 +1,7 @@
-# LLVM IR语法—类型系统
+---
+title: LLVM IR语法—类型系统
+description: 介绍LLVM IR语法中的类型系统
+---
 
 类型系统是LLVM IR最重要的特性之一，强类型有利于在LLVM IR上开启大量优化
 
