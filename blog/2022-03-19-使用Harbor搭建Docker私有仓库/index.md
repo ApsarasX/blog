@@ -160,7 +160,7 @@ database:
 如果不做任何配置直接在客户端中使用 `docker pull` 拉取或者使用 `docker push` 推送镜像，会出现如下错误：
 
 ```
-Error response from daemon: Get "https://192.168.0.2/v2/": dial tcp 101.43.218.206:443: connect: connection refused
+Error response from daemon: Get "https://192.168.0.2/v2/": dial tcp 192.168.0.2:443: connect: connection refused
 ```
 
 这是因为本文所搭建的镜像服务是HTTP版的，而客户端上的Docker默认使用HTTPS访问远程镜像仓库，如果要正常使用，必须在客户端Docker的 `/etc/docker/daemon.json` 配置文件中配置 `insecure-registries` 字段，该字段为Harbor镜像服务所在的服务端IP地址。
