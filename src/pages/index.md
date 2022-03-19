@@ -20,7 +20,7 @@ function Clock(props) {
 
   return (
     <div>
-      <h2>你好，世界，现在是{date.toLocaleString()}</h2>
+      <h2>你好，世界，现在时间是{date.toLocaleString()}</h2>
     </div>
   );
 }

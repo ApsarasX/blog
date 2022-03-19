@@ -7,9 +7,9 @@ export default function GiscusComment() {
       <Giscus
         repo="ApsarasX/blog"
         repoId="R_kgDOHBaFAQ"
-        category="Announcements"
-        categoryId="DIC_kwDOHBaFAc4COKaA"
-        mapping="pathname"
+        category="Comments"
+        categoryId="DIC_kwDOHBaFAc4COKaB"
+        mapping="og:title"
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
