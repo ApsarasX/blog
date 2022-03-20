@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import type { ArchiveBlogPost, Props } from '@theme/BlogArchivePage';
 import { translate } from '@docusaurus/Translate';
-import { Divider, PageHeader, Timeline } from 'antd';
+import { Divider, PageHeader, Radio, Timeline } from 'antd';
 import dayjs from 'dayjs';
 import styles from './styles.module.css';
 
@@ -29,7 +29,15 @@ function Year({ year, posts }: YearProp) {
   );
 }
 
-function YearsSection({ years, total }: { years: YearProp[]; total: number }) {
+function YearsSection({
+  years,
+  total,
+  setOrder
+}: {
+  years: YearProp[];
+  total: number;
+  setOrder: React.Dispatch<React.SetStateAction<Order>>;
+}) {
   return (
     <section className="margin-vert--lg">
       <div className="container">
@@ -37,8 +45,13 @@ function YearsSection({ years, total }: { years: YearProp[]; total: number }) {
           className={styles.pageHeader}
           title="归档"
           subTitle={`当前共计${total}篇博客，继续加油 🎉🎉🎉`}
+          extra={
+            <Radio.Group defaultValue="newest" onChange={e => setOrder(e.target.value)}>
+              <Radio.Button value="newest">最新发布</Radio.Button>
+              <Radio.Button value="oldest">最旧发布</Radio.Button>
+            </Radio.Group>
+          }
         />
-        {/* <Alert message={`当前共计${total}篇博客，继续加油 🎉🎉🎉`} type="success" /> */}
         <div className="row">
           {years.map((_props, idx) => (
             <div key={idx} className="col col--12 margin-vert--sm">
@@ -51,13 +64,27 @@ function YearsSection({ years, total }: { years: YearProp[]; total: number }) {
   );
 }
 
-function listPostsByYears(blogPosts: readonly ArchiveBlogPost[]): YearProp[] {
-  const postsByYear = blogPosts.reduceRight((posts, post) => {
-    const year = post.metadata.date.split('-')[0]!;
-    const yearPosts = posts.get(year) ?? [];
-    return posts.set(year, [post, ...yearPosts]);
-  }, new Map<string, ArchiveBlogPost[]>());
+type Order = 'newest' | 'oldest';
 
+function listPostsByYears(
+  blogPosts: readonly ArchiveBlogPost[],
+  order: Order = 'newest'
+): YearProp[] {
+  let postsByYear: Map<string, ArchiveBlogPost[]>;
+
+  if (order === 'newest') {
+    postsByYear = blogPosts.reduce((posts, post) => {
+      const year = post.metadata.date.split('-')[0]!;
+      const yearPosts = posts.get(year) ?? [];
+      return posts.set(year, [...yearPosts, post]);
+    }, new Map<string, ArchiveBlogPost[]>());
+  } else {
+    postsByYear = blogPosts.reduceRight((posts, post) => {
+      const year = post.metadata.date.split('-')[0]!;
+      const yearPosts = posts.get(year) ?? [];
+      return posts.set(year, [post, ...yearPosts]);
+    }, new Map<string, ArchiveBlogPost[]>());
+  }
   return Array.from(postsByYear, ([year, posts]) => ({
     year,
     posts
@@ -75,11 +102,14 @@ export default function BlogArchive({ archive }: Props): JSX.Element {
     message: 'Archive',
     description: 'The page & hero description of the blog archive page'
   });
-  const years = listPostsByYears(archive.blogPosts);
+  const [order, setOrder] = useState<Order>('newest');
+  const years = listPostsByYears(archive.blogPosts, order);
   return (
     <Layout title={title} description={description}>
       <main>
-        {years.length > 0 && <YearsSection years={years} total={archive.blogPosts.length} />}
+        {years.length > 0 && (
+          <YearsSection years={years} total={archive.blogPosts.length} setOrder={setOrder} />
+        )}
       </main>
     </Layout>
   );

@@ -17,12 +17,12 @@ export default function BlogSidebar(): JSX.Element | null {
       })}
     >
       <Menu>
-        <Menu.Item icon={<UnorderedListOutlined />}>
+        <Menu.Item key="archives" icon={<UnorderedListOutlined />}>
           <Link isNavLink to="/blog/archives" className={styles.sidebarItemLink}>
             归档
           </Link>
         </Menu.Item>
-        <Menu.Item icon={<TagsOutlined />}>
+        <Menu.Item key="tags" icon={<TagsOutlined />}>
           <Link isNavLink to="/blog/tags" className={styles.sidebarItemLink}>
             标签
           </Link>
