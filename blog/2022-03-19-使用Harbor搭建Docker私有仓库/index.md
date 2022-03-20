@@ -51,7 +51,7 @@ docker -v
 
 ### 下载Harbor
 
-去Harbor官方仓库的Release页面下载离线安装包并解压。
+去Harbor官方仓库的[Release页面](https://github.com/goharbor/harbor/releases)下载离线安装包并解压。
 
 ```shell
 # 离线下载安装包
@@ -78,7 +78,7 @@ cp harbor.yml.tmpl harbor.yml
 # The IP address or hostname to access admin UI and registry service.
 # DO NOT use localhost or 127.0.0.1, because Harbor needs to be accessed by external clients.
 - hostname: reg.mydomain.com
-+ hostname: reg.mydomain.com
++ hostname: 请替换为服务端IP或域名
 
 # http related config
 http:
@@ -226,4 +226,13 @@ docker pull your.domain.com/PROJECT_NAME/REPOSITORY[:TAG]
 
 其中 `PROJECT_NAME` 是在 Harbor UI 新建的项目名，`REPOSITORY` 是镜像名，`TAG` 是镜像标签。
 
+:::
+
+## 参考
+
+:::note
+- https://goharbor.io/docs/2.4.0/install-config
+- https://github.com/goharbor/harbor
+- https://sgfoot.com/harbor-install.html
+- https://bambrow.com/20211224-harbor-installation-guide
 :::
