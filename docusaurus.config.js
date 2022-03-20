@@ -97,8 +97,9 @@ const config = {
 if (process.env.NODE_ENV === 'production') {
   config.scripts = [
     {
-      src: 'https://static.cloudflareinsights.com/beacon.min.js?token=779e16ffbd704ab5894ae8df7714216b',
-      defer: true
+      src: 'https://static.cloudflareinsights.com/beacon.min.js',
+      defer: true,
+      'data-cf-beacon': '{"token": "d6f0de92e93f4f16ac7bde3716b135a1"}'
     }
   ];
 }
