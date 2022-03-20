@@ -24,7 +24,10 @@ const config = {
           archiveBasePath: '/archives'
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css')
+          customCss: [
+            require.resolve('./src/css/theme.css'),
+            require.resolve('./src/css/antd.css'),
+          ]
         }
       })
     ]
