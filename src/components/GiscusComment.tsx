@@ -1,7 +1,10 @@
 import React from 'react';
 import { Giscus } from '@giscus/react';
+import { useColorMode } from '@docusaurus/theme-common';
 
 export default function GiscusComment() {
+  const { isDarkTheme } = useColorMode();
+  const theme = isDarkTheme ? 'dark' : 'light';
   return (
     <div className="giscus-wrapper docusaurus-mt-lg">
       <Giscus
@@ -13,7 +16,7 @@ export default function GiscusComment() {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme="preferred_color_scheme"
+        theme={theme}
         lang="zh-CN"
       />
     </div>
