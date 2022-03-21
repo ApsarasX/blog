@@ -26,8 +26,12 @@ const config = {
         theme: {
           customCss: [
             require.resolve('./src/css/theme.css'),
-            require.resolve('./src/css/antd.css'),
+            require.resolve('./src/css/antd.css')
           ]
+        },
+        gtag: {
+          trackingID: 'G-E5FYELPVPE',
+          anonymizeIP: false
         }
       })
     ]
@@ -96,5 +100,11 @@ const config = {
     locales: ['zh-CN']
   }
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.scripts = [
+    'https://hm.baidu.com/hm.js?ccbb69e1130be9536c50dc89f8796539'
+  ];
+}
 
 module.exports = config;
