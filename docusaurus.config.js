@@ -36,7 +36,26 @@ const config = {
       })
     ]
   ],
-  themes: ['@docusaurus/theme-live-codeblock'],
+  themes: [
+    '@docusaurus/theme-live-codeblock',
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      ({
+        hashed: true,
+        language: ['en', 'zh'],
+        translations: {
+          search_placeholder: '搜索',
+          see_all_results: '查看全部搜索结果',
+          no_results: '找不到相关结果',
+          search_results_for: '关于"{{ keyword }}"的搜索结果',
+          search_the_documentation: '搜索',
+          count_documents_found: '找到{{ count }}条结果',
+          count_documents_found_plural: '找到{{ count }}条结果',
+          no_documents_were_found: '找不到相关结果'
+        }
+      })
+    ]
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
