@@ -32,7 +32,8 @@ const config = {
         gtag: {
           trackingID: 'G-E5FYELPVPE',
           anonymizeIP: false
-        }
+        },
+        sitemap: false
       })
     ]
   ],
@@ -40,7 +41,7 @@ const config = {
     '@docusaurus/theme-live-codeblock',
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
-      ({
+      {
         hashed: true,
         language: ['en', 'zh'],
         translations: {
@@ -53,7 +54,7 @@ const config = {
           count_documents_found_plural: '找到{{ count }}条结果',
           no_documents_were_found: '找不到相关结果'
         }
-      })
+      }
     ]
   ],
   themeConfig:
@@ -121,6 +122,15 @@ const config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
+  config.plugins = [
+    [
+      require.resolve('./packages/docusaurus-plugin-sitemap'),
+      /** @type {import('@docusaurus/plugin-sitemap').Options} */
+      ({
+        ignore: [/^\/blog\/tags/, /^\/blog\/archives/, /^\/search/]
+      })
+    ]
+  ];
   config.scripts = [
     'https://hm.baidu.com/hm.js?ccbb69e1130be9536c50dc89f8796539'
   ];

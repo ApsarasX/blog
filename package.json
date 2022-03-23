@@ -2,8 +2,12 @@
   "name": "blog",
   "version": "0.0.2",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development docusaurus start --locale zh-CN",
+    "prebuild": "npm run build -w packages/*",
     "build": "cross-env NODE_ENV=production docusaurus build --locale zh-CN",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
