@@ -25,8 +25,8 @@ const config = {
         },
         theme: {
           customCss: [
-            require.resolve('./src/css/theme.css'),
-            require.resolve('./src/css/antd.css')
+            require.resolve('./src/styles/theme.css'),
+            require.resolve('./src/styles/antd.css')
           ]
         },
         gtag: {
@@ -60,8 +60,8 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       colorMode: {
-        respectPrefersColorScheme: true,
-        disableSwitch: false
+        defaultMode: 'light',
+        disableSwitch: true
       },
       navbar: {
         title: 'ApsarasX',
