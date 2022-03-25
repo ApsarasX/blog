@@ -37,6 +37,23 @@ const config = {
       })
     ]
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-blog',
+      /** @type {import('@docusaurus/plugin-content-blog').Options} */
+      ({
+        id: 'weekly',
+        routeBasePath: 'weekly',
+        path: 'weekly',
+        showReadingTime: false,
+        blogSidebarTitle: '全部周刊',
+        blogSidebarCount: 'ALL',
+        archiveBasePath: null,
+        blogPostComponent: '@site/src/theme/WeeklyPostPage',
+        blogListComponent: '@site/src/theme/WeeklyListPage'
+      })
+    ]
+  ],
   themes: [
     '@docusaurus/theme-live-codeblock',
     [
@@ -69,6 +86,7 @@ const config = {
         items: [
           { to: '/blog', label: '博客', position: 'left' },
           { to: '/docs', label: '教程', position: 'left' },
+          { to: '/weekly', label: 'WebAssembly周刊', position: 'left' },
           {
             href: 'https://github.com/ApsarasX',
             className: 'header-github-link',
@@ -123,6 +141,7 @@ const config = {
 
 if (process.env.NODE_ENV === 'production') {
   config.plugins = [
+    ...config.plugins,
     [
       require.resolve('./packages/docusaurus-plugin-sitemap'),
       /** @type {import('@docusaurus/plugin-sitemap').Options} */
