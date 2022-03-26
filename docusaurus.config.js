@@ -20,6 +20,8 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js')
         },
         blog: {
+          blogTitle: '博客',
+          blogDescription: '博客',
           showReadingTime: false,
           archiveBasePath: '/archives'
         },
@@ -46,6 +48,8 @@ const config = {
         routeBasePath: 'weekly',
         path: 'weekly',
         showReadingTime: false,
+        blogTitle: 'WebAssembly周刊',
+        blogDescription: 'WebAssembly周刊',
         blogSidebarTitle: '全部周刊',
         blogSidebarCount: 'ALL',
         archiveBasePath: null,

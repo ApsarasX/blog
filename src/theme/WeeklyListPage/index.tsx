@@ -3,31 +3,37 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Link from '@docusaurus/Link';
 import WeeklyLayout from '@site/src/theme/WeeklyLayout';
 import type { Props } from '@theme/BlogListPage';
-import { ThemeClassNames } from '@docusaurus/theme-common';
+import {
+  PageMetadata,
+  HtmlClassNameProvider,
+  ThemeClassNames
+} from '@docusaurus/theme-common';
+import SearchMetadata from '@theme/SearchMetadata';
+import clsx from 'clsx';
 import { Typography } from 'antd';
 import dayjs from 'dayjs';
 import styles from './styles.module.css';
 
-export default function BlogListPage(props: Props): JSX.Element {
-  const { metadata, items } = props;
+function BlogListPageMetadata(props: Props): JSX.Element {
+  const { metadata } = props;
   const {
     siteConfig: { title: siteTitle }
   } = useDocusaurusContext();
   const { blogDescription, blogTitle, permalink } = metadata;
   const isBlogOnlyMode = permalink === '/';
   const title = isBlogOnlyMode ? siteTitle : blogTitle;
-
   return (
-    <WeeklyLayout
-      title={title}
-      description={blogDescription}
-      wrapperClassName={ThemeClassNames.wrapper.blogPages}
-      pageClassName={ThemeClassNames.page.blogListPage}
-      searchMetadata={{
-        // assign unique search tag to exclude this page from search results!
-        tag: 'blog_posts_list'
-      }}
-    >
+    <>
+      <PageMetadata title={title} description={blogDescription} />
+      <SearchMetadata tag="blog_posts_list" />
+    </>
+  );
+}
+
+function BlogListPageContent(props: Props): JSX.Element {
+  const { items } = props;
+  return (
+    <WeeklyLayout>
       <div>
         <h1 className={styles.pageTitle}>全部WebAssebmy周刊</h1>
         {items.map(({ content: BlogPostContent }) => {
@@ -58,5 +64,19 @@ export default function BlogListPage(props: Props): JSX.Element {
         </div>
       </div>
     </WeeklyLayout>
+  );
+}
+
+export default function BlogListPage(props: Props): JSX.Element {
+  return (
+    <HtmlClassNameProvider
+      className={clsx(
+        ThemeClassNames.wrapper.blogPages,
+        ThemeClassNames.page.blogListPage
+      )}
+    >
+      <BlogListPageMetadata {...props} />
+      <BlogListPageContent {...props} />
+    </HtmlClassNameProvider>
   );
 }

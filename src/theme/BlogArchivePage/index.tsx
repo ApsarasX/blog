@@ -3,6 +3,7 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import type { ArchiveBlogPost, Props } from '@theme/BlogArchivePage';
 import { translate } from '@docusaurus/Translate';
+import { PageMetadata } from '@docusaurus/theme-common';
 import { Divider, PageHeader, Radio, Timeline } from 'antd';
 import dayjs from 'dayjs';
 import styles from './styles.module.css';
@@ -46,7 +47,10 @@ function YearsSection({
           title="归档"
           subTitle={`当前共计${total}篇博客，继续加油 🎉🎉🎉`}
           extra={
-            <Radio.Group defaultValue="newest" onChange={e => setOrder(e.target.value)}>
+            <Radio.Group
+              defaultValue="newest"
+              onChange={e => setOrder(e.target.value)}
+            >
               <Radio.Button value="newest">最新发布</Radio.Button>
               <Radio.Button value="oldest">最旧发布</Radio.Button>
             </Radio.Group>
@@ -105,12 +109,19 @@ export default function BlogArchive({ archive }: Props): JSX.Element {
   const [order, setOrder] = useState<Order>('newest');
   const years = listPostsByYears(archive.blogPosts, order);
   return (
-    <Layout title={title} description={description}>
-      <main>
-        {years.length > 0 && (
-          <YearsSection years={years} total={archive.blogPosts.length} setOrder={setOrder} />
-        )}
-      </main>
-    </Layout>
+    <>
+      <PageMetadata title={title} description={description} />
+      <Layout>
+        <main>
+          {years.length > 0 && (
+            <YearsSection
+              years={years}
+              total={archive.blogPosts.length}
+              setOrder={setOrder}
+            />
+          )}
+        </main>
+      </Layout>
+    </>
   );
 }

@@ -13,7 +13,7 @@ export default function BlogLayout(props: Props): JSX.Element {
         <div className="row">
           {hasSidebar && (
             <aside className="col col--2">
-              <WeeklySidebar sidebar={sidebar!} />
+              <WeeklySidebar sidebar={sidebar} />
             </aside>
           )}
           <main

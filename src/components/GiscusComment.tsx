@@ -2,9 +2,12 @@ import React from 'react';
 import { Giscus } from '@giscus/react';
 import { useColorMode } from '@docusaurus/theme-common';
 
-export default function GiscusComment() {
-  const { isDarkTheme } = useColorMode();
-  const theme = isDarkTheme ? 'dark' : 'light';
+interface GiscusCommentProps {
+  title: string;
+}
+
+export default function GiscusComment({ title }: GiscusCommentProps) {
+  const { colorMode } = useColorMode();
   return (
     <div className="giscus-wrapper docusaurus-mt-lg">
       <Giscus
@@ -12,11 +15,12 @@ export default function GiscusComment() {
         repoId="R_kgDOHBaFAQ"
         category="Comments"
         categoryId="DIC_kwDOHBaFAc4COKaB"
-        mapping="og:title"
+        mapping="specific"
+        term={title}
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme={theme}
+        theme={colorMode}
         lang="zh-CN"
       />
     </div>
