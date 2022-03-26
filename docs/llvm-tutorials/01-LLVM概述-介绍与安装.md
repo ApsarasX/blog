@@ -1,5 +1,5 @@
 ---
-title: LLVM概述—介绍与安装
+title: LLVM概述-介绍与安装
 description: 介绍LLVM及其安装方法
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: LLVM概述—第一个LLVM项目
+title: LLVM概述-第一个LLVM项目
 description: 基于LLVM开发打印C语言代码中函数签名的示例项目
 ---
 

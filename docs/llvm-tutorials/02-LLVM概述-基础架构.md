@@ -1,5 +1,5 @@
 ---
-title: LLVM概述—基础架构
+title: LLVM概述-基础架构
 description: 介绍LLVM的基础架构及相关概念
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: LLVM IR语法—链接类型
+title: LLVM IR语法-链接类型
 description: 介绍LLVM IR语法中的链接类型
 ---
 

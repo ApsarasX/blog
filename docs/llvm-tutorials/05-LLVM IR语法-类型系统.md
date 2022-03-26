@@ -1,5 +1,5 @@
 ---
-title: LLVM IR语法—类型系统
+title: LLVM IR语法-类型系统
 description: 介绍LLVM IR语法中的类型系统
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: 使用Harbor搭建Docker镜像服务(HTTP版)
-description: 使用Harbor搭建Docker镜像服务(HTTP版)
+title: 使用Harbor搭建Docker镜像服务
+description: 使用Harbor搭建Docker镜像服务
 tags: [Docker, Harbor]
 ---
 
