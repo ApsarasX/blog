@@ -56,14 +56,15 @@ const config = {
         blogPostComponent: '@site/src/theme/WeeklyPostPage',
         blogListComponent: '@site/src/theme/WeeklyListPage'
       })
-    ]
-  ],
-  themes: [
-    '@docusaurus/theme-live-codeblock',
+    ],
     [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
+      '@easyops-cn/docusaurus-search-local',
       {
         hashed: true,
+        docsRouteBasePath: '/docs',
+        blogRouteBasePath: ['/blog', '/weekly'],
+        docsDir: 'docs',
+        blogDir: ['blog', 'weekly'],
         language: ['en', 'zh'],
         translations: {
           search_placeholder: '搜索',
@@ -78,6 +79,7 @@ const config = {
       }
     ]
   ],
+  themes: ['@docusaurus/theme-live-codeblock'],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -150,7 +152,7 @@ if (process.env.NODE_ENV === 'production') {
       require.resolve('./packages/docusaurus-plugin-sitemap'),
       /** @type {import('@docusaurus/plugin-sitemap').Options} */
       ({
-        ignore: [/^\/blog\/tags/, /^\/blog\/archives/, /^\/search/]
+        ignorePatterns: ['/blog/archives', '/blog/tags/**', '/search']
       })
     ]
   ];

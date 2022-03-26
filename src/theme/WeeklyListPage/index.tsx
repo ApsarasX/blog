@@ -59,7 +59,7 @@ function BlogListPageContent(props: Props): JSX.Element {
         })}
         <div className={styles.row}>
           <Typography.Link href="https://wasmweekly.news" underline>
-            第1-166期请查看WebAssembly周刊原地址
+            第1-166期请查看原发布网站
           </Typography.Link>
         </div>
       </div>
