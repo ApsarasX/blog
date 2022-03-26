@@ -4,7 +4,8 @@ import Link from '@docusaurus/Link';
 import WeeklyLayout from '@site/src/theme/WeeklyLayout';
 import type { Props } from '@theme/BlogListPage';
 import { ThemeClassNames } from '@docusaurus/theme-common';
-import { normalizeFormattedDate } from '@site/src/utils/date';
+import { Typography } from 'antd';
+import dayjs from 'dayjs';
 import styles from './styles.module.css';
 
 export default function BlogListPage(props: Props): JSX.Element {
@@ -35,16 +36,26 @@ export default function BlogListPage(props: Props): JSX.Element {
               key={BlogPostContent.metadata.permalink}
               className={styles.row}
             >
-              <Link to={BlogPostContent.metadata.permalink}>
+              <Link
+                to={BlogPostContent.metadata.permalink}
+                component={Typography.Link}
+                // @ts-ignore
+                underline
+              >
                 {BlogPostContent.metadata.title.split('-')[1]}
               </Link>
               &emsp;
               <span>
-                {normalizeFormattedDate(BlogPostContent.metadata.formattedDate)}
+                {dayjs(BlogPostContent.metadata.date).format('YYYY-MM-DD')}
               </span>
             </div>
           );
         })}
+        <div className={styles.row}>
+          <Typography.Link href="https://wasmweekly.news" underline>
+            第1-166期请查看WebAssembly周刊原地址
+          </Typography.Link>
+        </div>
       </div>
     </WeeklyLayout>
   );
