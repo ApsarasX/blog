@@ -35,7 +35,9 @@ const config = {
           trackingID: 'G-E5FYELPVPE',
           anonymizeIP: false
         },
-        sitemap: false
+        sitemap: {
+          ignorePatterns: ['/blog/archives', '/blog/tags/**', '/search']
+        }
       })
     ]
   ],
@@ -146,16 +148,6 @@ const config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-  config.plugins = [
-    ...config.plugins,
-    [
-      require.resolve('./packages/docusaurus-plugin-sitemap'),
-      /** @type {import('@docusaurus/plugin-sitemap').Options} */
-      ({
-        ignorePatterns: ['/blog/archives', '/blog/tags/**', '/search']
-      })
-    ]
-  ];
   config.scripts = [
     'https://hm.baidu.com/hm.js?ccbb69e1130be9536c50dc89f8796539'
   ];

@@ -6,6 +6,27 @@ import { TagsOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import styles from './styles.module.css';
 import { translate } from '@docusaurus/Translate';
 
+const items = [
+  {
+    label: (
+      <Link isNavLink to="/blog/archives" className={styles.sidebarItemLink}>
+        归档
+      </Link>
+    ),
+    key: 'archives',
+    icon: <UnorderedListOutlined />
+  },
+  {
+    label: (
+      <Link isNavLink to="/blog/tags" className={styles.sidebarItemLink}>
+        标签
+      </Link>
+    ),
+    key: 'tags',
+    icon: <TagsOutlined />
+  }
+];
+
 export default function BlogSidebar(): JSX.Element | null {
   return (
     <nav
@@ -16,18 +37,7 @@ export default function BlogSidebar(): JSX.Element | null {
         description: 'The ARIA label for recent posts in the blog sidebar'
       })}
     >
-      <Menu>
-        <Menu.Item key="archives" icon={<UnorderedListOutlined />}>
-          <Link isNavLink to="/blog/archives" className={styles.sidebarItemLink}>
-            归档
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="tags" icon={<TagsOutlined />}>
-          <Link isNavLink to="/blog/tags" className={styles.sidebarItemLink}>
-            标签
-          </Link>
-        </Menu.Item>
-      </Menu>
+      <Menu items={items} />
     </nav>
   );
 }
