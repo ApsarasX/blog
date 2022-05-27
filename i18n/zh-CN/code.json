@@ -218,10 +218,6 @@
     "message": "Languages",
     "description": "The label for the mobile language switcher dropdown"
   },
-  "theme.tags.tagsPageTitle": {
-    "message": "标签",
-    "description": "The title of the tag list page"
-  },
   "theme.Playground.result": {
     "message": "结果",
     "description": "The result label of the live codeblocks"
@@ -241,5 +237,31 @@
   "theme.CodeBlock.wordWrapToggle": {
     "message": "Toggle word wrap",
     "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.SearchBar.noResultsText": {
+    "message": "找不到相关结果"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "查看全部搜索结果"
+  },
+  "theme.SearchBar.label": {
+    "message": "搜索",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "关于 \"{query}\" 的搜索结果",
+    "description": "The search page title for non-empty query"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "搜索",
+    "description": "The search page title for empty query"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "找到 {count} 条结果",
+    "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "找不到相关结果",
+    "description": "The paragraph for empty search result"
   }
 }

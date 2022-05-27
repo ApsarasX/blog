@@ -1,10 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
-import Link from '@docusaurus/Link';
 import { Menu } from 'antd';
 import { TagsOutlined, UnorderedListOutlined } from '@ant-design/icons';
-import styles from './styles.module.css';
+import Link from '@docusaurus/Link';
 import { translate } from '@docusaurus/Translate';
+
+import styles from './styles.module.css';
 
 const items = [
   {
