@@ -25,7 +25,7 @@ const config = {
         theme: {
           customCss: [
             require.resolve('./src/styles/theme.css'),
-            require.resolve('./src/styles/antd.css')
+            require.resolve('./src/styles/antd-override.css')
           ]
         },
         gtag: {

@@ -1,0 +1,19 @@
+@import './antd-dark.css';
+
+.ant-menu,
+.ant-dark-menu {
+  background: none !important;
+}
+
+.ant-menu-item:active,
+.ant-dark-menu-item:active {
+  background: none !important;
+}
+
+.ant-menu-timeline-item-last > .ant-menu-timeline-item-content {
+  min-height: unset !important;
+}
+
+.ant-menu-timeline-item-last > .ant-menu-timeline-item-content {
+  min-height: unset !important;
+}

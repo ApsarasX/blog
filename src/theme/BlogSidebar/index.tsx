@@ -1,9 +1,10 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Menu } from 'antd';
+import { ConfigProvider, Menu } from 'antd';
 import { TagsOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import Link from '@docusaurus/Link';
 import { translate } from '@docusaurus/Translate';
+import { useColorMode } from '@docusaurus/theme-common';
 
 import styles from './styles.module.css';
 
@@ -29,6 +30,7 @@ const items = [
 ];
 
 export default function BlogSidebar(): JSX.Element | null {
+  const { colorMode } = useColorMode();
   return (
     <nav
       className={clsx(styles.sidebar, 'thin-scrollbar')}
@@ -38,7 +40,9 @@ export default function BlogSidebar(): JSX.Element | null {
         description: 'The ARIA label for recent posts in the blog sidebar'
       })}
     >
-      <Menu items={items} />
+      <ConfigProvider prefixCls={colorMode === 'dark' ? 'ant-dark' : 'ant'}>
+        <Menu items={items} />
+      </ConfigProvider>
     </nav>
   );
 }

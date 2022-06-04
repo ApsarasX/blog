@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Divider, PageHeader, Radio, Timeline } from 'antd';
+import { ConfigProvider, Divider, PageHeader, Radio, Timeline } from 'antd';
 import dayjs from 'dayjs';
 import Link from '@docusaurus/Link';
 import { translate } from '@docusaurus/Translate';
-import { PageMetadata } from '@docusaurus/theme-common';
+import { PageMetadata, useColorMode } from '@docusaurus/theme-common';
 import Layout from '@theme/Layout';
 import type { ArchiveBlogPost, Props } from '@theme/BlogArchivePage';
 
@@ -40,32 +40,35 @@ function YearsSection({
   total: number;
   setOrder: React.Dispatch<React.SetStateAction<Order>>;
 }) {
+  const { colorMode } = useColorMode();
   return (
-    <section className="margin-vert--lg">
-      <div className="container">
-        <PageHeader
-          className={styles.pageHeader}
-          title="归档"
-          subTitle={`当前共计${total}篇博客，继续加油 🎉🎉🎉`}
-          extra={
-            <Radio.Group
-              defaultValue="newest"
-              onChange={e => setOrder(e.target.value)}
-            >
-              <Radio.Button value="newest">最新发布</Radio.Button>
-              <Radio.Button value="oldest">最旧发布</Radio.Button>
-            </Radio.Group>
-          }
-        />
-        <div className="row">
-          {years.map((_props, idx) => (
-            <div key={idx} className="col col--12 margin-vert--sm">
-              <Year {..._props} />
-            </div>
-          ))}
+    <ConfigProvider prefixCls={colorMode === 'dark' ? 'ant-dark' : 'ant'}>
+      <section className="margin-vert--lg">
+        <div className="container">
+          <PageHeader
+            className={styles.pageHeader}
+            title="归档"
+            subTitle={`当前共计${total}篇博客，继续加油 🎉🎉🎉`}
+            extra={
+              <Radio.Group
+                defaultValue="newest"
+                onChange={e => setOrder(e.target.value)}
+              >
+                <Radio.Button value="newest">最新发布</Radio.Button>
+                <Radio.Button value="oldest">最旧发布</Radio.Button>
+              </Radio.Group>
+            }
+          />
+          <div className="row">
+            {years.map((_props, idx) => (
+              <div key={idx} className="col col--12 margin-vert--sm">
+                <Year {..._props} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </ConfigProvider>
   );
 }
 
