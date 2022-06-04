@@ -1,9 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/vsLight');
-const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'ApsarasX',
@@ -76,8 +73,8 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       colorMode: {
-        defaultMode: 'light',
-        disableSwitch: true
+        disableSwitch: false,
+        respectPrefersColorScheme: true
       },
       navbar: {
         title: 'ApsarasX',
@@ -127,8 +124,18 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} ApsarasX Built with Docusaurus.`
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme
+        additionalLanguages: ['java', 'latex'],
+        magicComments: [
+          {
+            className: 'theme-code-block-highlighted-line',
+            line: 'highlight-next-line',
+            block: { start: 'highlight-start', end: 'highlight-end' },
+          },
+          {
+            className: 'code-block-error-line',
+            line: 'This will error',
+          }
+        ]
       }
     }),
   i18n: {
@@ -137,10 +144,20 @@ const config = {
   }
 };
 
-if (process.env.NODE_ENV === 'production') {
-  config.scripts = [
-    'https://hm.baidu.com/hm.js?ccbb69e1130be9536c50dc89f8796539'
-  ];
+async function createConfig() {
+  const lightTheme = (await import('./src/utils/prismLight.mjs')).default;
+  const darkTheme = (await import('./src/utils/prismDark.mjs')).default;
+  // @ts-expect-error: we know it exists, right
+  config.themeConfig.prism.theme = lightTheme;
+  // @ts-expect-error: we know it exists, right
+  config.themeConfig.prism.darkTheme = darkTheme;
+  // add baidu analytics
+  if (process.env.NODE_ENV === 'production') {
+    config.scripts = [
+      'https://hm.baidu.com/hm.js?ccbb69e1130be9536c50dc89f8796539'
+    ];
+  }
+  return config;
 }
 
-module.exports = config;
+module.exports = createConfig;
