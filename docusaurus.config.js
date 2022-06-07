@@ -55,9 +55,12 @@ const config = {
         blogPostComponent: '@site/src/theme/WeeklyPostPage',
         blogListComponent: '@site/src/theme/WeeklyListPage'
       })
-    ],
+    ]
+  ],
+  themes: [
+    '@docusaurus/theme-live-codeblock',
     [
-      '@easyops-cn/docusaurus-search-local',
+      require.resolve('@easyops-cn/docusaurus-search-local'),
       {
         hashed: true,
         docsRouteBasePath: '/docs',
@@ -68,7 +71,6 @@ const config = {
       }
     ]
   ],
-  themes: ['@docusaurus/theme-live-codeblock'],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
